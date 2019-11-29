@@ -17,12 +17,12 @@
   "devDependencies": {
     "chromedriver": "^78.0.1",
     "cucumber-html-reporter": "^5.0.2",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "selenium-standalone": "^6.17.0"
   },
   "scripts": {
     "e2e-test": "cucumber-js --require cucumber.conf.js --require step_definitions --format node_modules/cucumber-pretty",
-    "e2e-test+": "mkdirp report && cucumber-js --require cucumber.conf.js --require features/step_definitions --format node_modules/cucumber-pretty --format json:report/cucumber_report.json",
-    "sgh-login": "cucumber-js --tags @sgh --require cucumber.conf.js --require step_definitions --format node_modules/cucumber-pretty"
+    "sgh-login": "mkdirp report && cucumber-js --tags @sgh --require cucumber.conf.js --require step_definitions --format node_modules/cucumber-pretty --format json:report/cucumber_report.json"
   },
   "author": "",
   "license": "ISC"

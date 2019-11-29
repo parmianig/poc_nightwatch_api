@@ -7,4 +7,4 @@ Background:
 Scenario: successful sign-in
   Given user has valid credentials
   When user sign-in
-  Then the browser should show the welcome page
+  Then the browser should show the "MY ACCOUNT" message

@@ -1,7 +1,7 @@
 const { client } = require('nightwatch-api');
 const { Given, Then, When } = require('cucumber');
 
-const url = 'https://uat2.sunglasshut.com/UserSignInView?catalogId=20602&langId=-1&storeId=10152'
+const url = 'https://stage.sunglasshut.com/UserSignInView?catalogId=20602&langId=-1&storeId=10152'
 const user = 'test.sgh.us@abstract.it'
 const pass = 'Password1!'
 
@@ -11,13 +11,14 @@ Given(/^browser is on sign-in page$/, () => {
 });
 
 Given(/^user has valid credentials$/, () => {
-  return 'pending';
+  return client.setValue('#WC_AccountDisplay_FormInput_logonId_In_Logon_1_copy4', user)
+    .setValue('#WC_AccountDisplay_FormInput_logonPassword_In_Logon_1_copy4', pass)
 });
 
 When(/^user sign-in$/, () => {
-  return 'pending';
+  return client.waitForElementVisible('.red-button', 1000).click('.red-button')
 });
 
-Then(/^the browser should show the welcome page$/, () => {
-  return 'pending';
+Then(/^the browser should show the "([^"]*)" message$/, message => {
+  return client.waitForElementVisible('.myaccount-welcome', 2000).assert.visible('.myaccount-welcome', message)
 });
